@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Yerika ❤️</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+overflow:hidden;
+font-family:Arial;
+}
+
+canvas{
+display:block;
+}
+
+.mensaje{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+color:white;
+text-align:center;
+font-size:22px;
+text-shadow:0 0 10px pink,0 0 20px purple;
+}
+
+h1{
+font-size:35px;
+color:#ff66cc;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="galaxy"></canvas>
+
+<div class="mensaje">
+<h1>Yerika 💖</h1>
+<p>Eres mi galaxia favorita</p>
+<p>Te amo muchísimo</p>
+<p>Siempre serás mi universo ✨</p>
+</div>
+
+<script>
+
+const canvas = document.getElementById("galaxy")
+const ctx = canvas.getContext("2d")
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+let stars = []
+
+for(let i=0;i<1500;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2
+})
+}
+
+function draw(){
+
+ctx.fillStyle="black"
+ctx.fillRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="white"
+
+stars.forEach(star=>{
+ctx.beginPath()
+ctx.arc(star.x,star.y,star.size,0,Math.PI*2)
+ctx.fill()
+
+star.y+=0.3
+
+if(star.y>canvas.height){
+star.y=0
+}
+})
+
+requestAnimationFrame(draw)
+
+}
+
+draw()
+
+</script>
+
+</body>
+  </html>
